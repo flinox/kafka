@@ -1,8 +1,8 @@
 
 # Kafka #
 
-### A Container who has a zookeeper and kafka with connectors installed.
-To read data from a oracle database using query flashback tables and publish on a topic KAFKA. ###
+A Container who has a zookeeper and kafka with connectors installed.
+To read data from a oracle database using query flashback tables and publish on a topic KAFKA.
 
 
 ### The container have ###
