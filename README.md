@@ -4,15 +4,12 @@
 This is a docker compose to create one container to run zookeeper and another container to run a kafka, create a network and automatically start the zookeeper and kafka to run a clearly installation.
 Great to use as a PoC.
 
-### The docker reference ###
+### The docker reference, this package use ###
 
-#### A docker with Zookeeper
-#### Zookeeper version: zookeeper-3.4.13
+#### Docker zookeeper-3.4.13
 ```flinox/zookeeper:v2```
 
-#### A docker with Kafka / Rest API / KSQL / Connectors
-#### Kafka version: kafka_2.11-1.0.0
-#### Confluent OSS version: confluent-oss-5.0.0-2.11
+#### Docker kafka_2.11-1.0.0, with Rest API / KSQL / Connectors of confluent-oss-5.0.0-2.11
 ```flinox/kafka:v2```
 
 
