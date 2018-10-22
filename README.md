@@ -1,16 +1,15 @@
 
 # A docker compose to start a kafka enviroment #
 
-This is a docker compose to create one container to run zookeeper and another container to run a kafka, create a network and automatically start the zookeeper and kafka to run a clearly installation.
-Great to use as a PoC.
+This is a docker compose to create one container to run a enviroment Kafka, with zookeeper, kafka and ksql. is a clean installation to helpful to do a fast PoC.
 
-### The docker reference, this package use ###
+### As reference, this package use dockers containers ###
 
 #### Docker zookeeper-3.4.13
-```flinox/zookeeper:v2```
+```flinox/zookeeper:v3```
 
 #### Docker kafka_2.11-1.0.0, with Rest API / KSQL / Connectors of confluent-oss-5.0.0-2.11
-```flinox/kafka:v2```
+```flinox/kafka:v3```
 
 
 ### The docker-compose.yml content to start the both dockers container ###
