@@ -1,0 +1,84 @@
+version: "3"
+      
+networks:
+  network-kafka:
+    driver: bridge
+    
+services:
+
+    flinox_zookeeper:
+      
+      image: flinox/zookeeper:v3
+      
+      container_name: flinox_zookeeper
+      
+      hostname: flinox_zookeeper
+      
+      user: zookeeper
+      
+      volumes:
+       - C:\Temp:/media/storage
+      
+      ports:
+       - "2181:2181"
+       - "2888:2888"
+       - "3888:3888"
+
+      expose:
+       - "2181"
+       - "2888"
+       - "3888"
+       
+      environment:
+       - AUTO_START=0
+       - ZOO_LOG_DIR=/media/storage/zookeeper/log
+       - ZOO_LOG4J_PROP='INFO,ROLLINGFILE'
+       - ZOOCFGDIR=/media/storage/zookeeper/config
+       
+      networks:
+       - network-kafka
+      
+      command: ["/zookeeper_start.sh"]
+      
+
+    flinox_kafka:
+      
+      image: flinox/kafka:v3
+
+      container_name: flinox_kafka      
+      
+      hostname: flinox_kafka
+      
+      volumes:
+       - C:\Temp:/media/storage
+      
+      ports:
+       - "8081:8081"
+       - "8082:8082"
+       - "8083:8083"
+       - "8088:8088"       
+       - "9092:9092"
+
+      expose:
+       - "8081"
+       - "8082"
+       - "8083"
+       - "8088"
+       - "9092"
+       
+      environment:
+       - AUTO_START=0
+       - KAFKA_LOG4J_OPTS=-Dlog4j.configuration=/media/storage/kafka/config/log4j.properties
+       - LOG4J_DIR=/media/storage/kafka/config/tools-log4j.properties
+       - LOG_DIR=/media/storage/kafka/log
+       
+      networks:
+       - network-kafka       
+
+      depends_on:
+       - flinox_zookeeper   
+       
+      command: ["/kafka_start.sh"]       
+          
+
+   
