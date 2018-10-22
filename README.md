@@ -15,7 +15,7 @@ flinox/kafka:v2
 
 ### The docker-compose.yml file ###
 
-´
+'
 version: "3"
       
 networks:
@@ -97,7 +97,7 @@ services:
        - flinox_zookeeper   
        
       command: ["/kafka_start.sh"]   
-´
+'
 
 
 ### The parameters ### 
@@ -126,7 +126,7 @@ docker exec -it flinox_kafka bash
 ./kafka-console-producer.sh --broker-list flinox_kafka:9092 --topic aluno-olimpo --property 'parse.key=true' --property 'key.separator=:'
 
 Exemplo de mensagens JSON:
-´
+'
 1:{ "id":1 , "nome" : "Fernando Lino D T Silva", "cpf" : "33333333333"}
 1:{ "id":1 , "nome" : "Fernando Lino D T Silva", "cpf" : "22222222222"}
 1:{ "id":1 , "nome" : "Fernando LDT Silva", "cpf" : "11111111111"}
@@ -135,42 +135,42 @@ Exemplo de mensagens JSON:
 2:{ "id":10, "nome" : "Leonardo L DT Silva", "cpf" : "55555555555"}
 2:{ "id":10, "nome" : "Leo Lino D T Silva", "cpf" : "11111111111"}
 2:{ "id":10, "nome" : "Leonardo Silva", "cpf" : "00000000000"}
-´
+'
 
 ### Abrir nova session para o KSQL ###
-´docker exec -it flinox_kafka bash´
+'docker exec -it flinox_kafka bash'
 
 ### Acessar pasta do KSQL ###
-´cd /opt/confluent-4.1.1/bin/´
+'cd /opt/confluent-4.1.1/bin/'
 
 ### Acessar o KSQL Client ###
-´./ksql http://flinox_kafka:8088´
+'./ksql http://flinox_kafka:8088'
 
 ### Testar a conectividade ###
-´show properties;´
+'show properties;'
  
 ### Create Stream ###
-´CREATE STREAM stream_aluno_olimpo (id int, nome varchar, cpf varchar) WITH (kafka_topic='aluno-olimpo', value_format='JSON', KEY=’id’);´
+'CREATE STREAM stream_aluno_olimpo (id int, nome varchar, cpf varchar) WITH (kafka_topic='aluno-olimpo', value_format='JSON', KEY=’id’);'
 
 ### Describe Stream ###
-´DESCRIBE strem_aluno_olimpo;´
+'DESCRIBE strem_aluno_olimpo;'
  
 ### Select no Stream, os resultados só são apresentados no momento que são enviados.
-´select * from stream_aluno_olimpo;´
+'select * from stream_aluno_olimpo;'
 
 ###### Some problems to run KSQL because of version 10 of JAVA ######
 
 ### Ajusts needed ###
-´
+'
 cd /opt/confluent-4.1.1/bin
 
 vi ksql-run-class.sh
-´
+'
 
 ### Remove the parameters below ###
-´
+'
 -XX:+UseParNewGC
 -PrintGCDateStamps
 -XX:+PrintGCDetails
 -UseGCLogFileRotation
-´
+'
