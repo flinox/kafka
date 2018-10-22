@@ -3,7 +3,7 @@
 
 This is a docker compose to create one container to run a enviroment Kafka, with zookeeper, kafka and ksql. is a clean installation to helpful to do a fast PoC.
 
-### As reference, this package use dockers containers ###
+### As reference, this package use dockers containers, so the pre requisite is have the docker installed. ###
 
 #### Docker zookeeper-3.4.13
 ```flinox/zookeeper:v3```
@@ -142,7 +142,7 @@ services:
 
 ### For manual executions without docker-compose.yml ###
 
-### CREATE A NETWORK DOCKER ###
+### Creating a network docker ###
 ```docker network create -d "bridge" --attachable network_kafka```
 
 ### ZOOKEEPER zookeeper-3.4.13 standalone ###
@@ -198,14 +198,18 @@ Exemplo de mensagens JSON:
 ### Ajusts needed ###
 ```
 cd /opt/confluent-4.1.1/bin
-
 vi ksql-run-class.sh
 ```
 
-### Remove the parameters below ###
+##### Remove the parameters below
 ```
 -XX:+UseParNewGC
 -PrintGCDateStamps
 -XX:+PrintGCDetails
 -UseGCLogFileRotation
 ```
+
+
+## How to use
+1. Download the content in a folder, for example C:\Temp
+2. 
