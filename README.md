@@ -130,6 +130,17 @@ services:
 /media_storage/zookeeper/log/zookeeper.log
 ```
 
+#### The main file to change zookeeper configuration is:
+```\media_storage\zookeeper\config\zoo.cfg```
+
+#### The main file to change kafka configuration is:
+```
+\media_storage\kafka\config\server.properties
+\media_storage\kafka\config\producer.properties
+\media_storage\kafka\config\kafka-rest.properties
+\media_storage\kafka\config\ksql-server.properties
+```
+
 ### For manual executions without docker-compose.yml ###
 
 ### CREATE A NETWORK DOCKER ###
