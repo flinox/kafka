@@ -1,28 +1,27 @@
 
-### Ajuda para GIT
+# Ajuda para GIT
 
 ## Inicializacao do git na pasta
-git init
+>git init
 
 ## Configurar sua conta
-git config --global user.email "email@example.com"
+>git config --global user.email "email@example.com"
 
 ## Adiciona uma referencia para o repositorio 
-git remote add <apelido_repositorio> https://github.com/<user_name>/<repositorio>.git
+>git remote add <apelido_repositorio> https://github.com/<user_name>/<repositorio>.git
 
 ## Remove referencia para repositorio
-git remote rm <apelido_repositorio>
+>git remote rm <apelido_repositorio>
 
 ## Puxar o repositório atualizado
-git pull <apelido_repositorio>
-
+>git pull <apelido_repositorio>
 
 ## Adicionar todas as alterações na Stage
-git add .
+>git add .
 
 ## Comitar as alterações
-git commit -m "descricao sucinta das alteracoes"
+>git commit -m "descricao sucinta das alteracoes"
 
 ## Empurra as mudanças para o GIT
-git push <apelido_repositorio> HEAD:<tag>
+>git push <apelido_repositorio> HEAD:<tag>
 
