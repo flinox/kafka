@@ -105,6 +105,31 @@ services:
 - AUTO_START to automatically starts the zookeeper / kafka, default is 0;
 - Volume, C:\Temp:/media/storage, where C:\Temp must be your local folder and /media/storage is the folder on container, to store data and logs files;
 
+
+### The folder and the configuration files is on this package, change this files if needed
+```
+/media_storage/kafka/config/connect-console-sink.properties
+/media_storage/kafka/config/connect-console-source.properties
+/media_storage/kafka/config/connect-distributed.properties
+/media_storage/kafka/config/connect-file-sink.properties
+/media_storage/kafka/config/connect-file-source.properties
+/media_storage/kafka/config/connect-log4j.properties
+/media_storage/kafka/config/connect-standalone.properties
+/media_storage/kafka/config/consumer.properties
+/media_storage/kafka/config/kafka-rest.properties
+/media_storage/kafka/config/ksql-server.properties
+/media_storage/kafka/config/log4j.properties
+/media_storage/kafka/config/producer.properties
+/media_storage/kafka/config/server.properties
+/media_storage/kafka/config/tools-log4j.properties
+/media_storage/kafka/config/zookeeper.properties
+/media_storage/zookeeper/config/configuration.xsl
+/media_storage/zookeeper/config/log4j.properties
+/media_storage/zookeeper/config/zoo.cfg
+/media_storage/zookeeper/data/zookeeper_server.pid
+/media_storage/zookeeper/log/zookeeper.log
+```
+
 ### For manual executions without docker-compose.yml ###
 
 ### CREATE A NETWORK DOCKER ###
