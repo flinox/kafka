@@ -1,19 +1,22 @@
 
-# Kafka #
+# A docker compose to start a kafka enviroment #
 
-A Container who has a zookeeper and kafka with connectors installed.
-To read data from a oracle database using query flashback tables and publish on a topic KAFKA.
+This is a docker compose to create one container to run zookeeper and another container to run a kafka, create a network and automatically start the zookeeper and kafka to run a clearly installation.
+Great to use as a PoC.
+
+### The docker reference ###
+
+#### A docker with Zookeeper
+#### Zookeeper version: zookeeper-3.4.13
+```flinox/zookeeper:v2```
+
+#### A docker with Kafka / Rest API / KSQL / Connectors
+#### Kafka version: kafka_2.11-1.0.0
+#### Confluent OSS version: confluent-oss-5.0.0-2.11
+```flinox/kafka:v2```
 
 
-### The container have ###
-
--- a container for Zookeeper
-flinox/zookeeper:v2
-
--- a container for Kafka / Rest API / KSQL / Connectors
-flinox/kafka:v2
-
-### The docker-compose.yml file ###
+### The docker-compose.yml content to start the both dockers container ###
 
 ```
 version: "3"
@@ -100,7 +103,7 @@ services:
 ```
 
 
-### The parameters ### 
+### Explaining the needs of the parameters ### 
 
 - AUTO_START to automatically starts the zookeeper / kafka, default is 0;
 - Volume, C:\Temp:/media/storage, where C:\Temp must be your local folder and /media/storage is the folder on container, to store data and logs files;
