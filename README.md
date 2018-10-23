@@ -3,7 +3,7 @@
 
 This is a docker compose to create one container to run a enviroment Kafka, with zookeeper, kafka and ksql. is a clean installation to helpful to do a fast PoC.
 
-### As reference, this package use dockers containers, so the pre requisite is have the docker installed. ###
+### As reference, this package use dockers containers, so the pre requisite is have the docker and docker compose installed. ###
 
 #### Docker zookeeper-3.4.13
 ```flinox/zookeeper:v3```
@@ -24,77 +24,57 @@ networks:
 services:
 
     flinox_zookeeper:
-      
       image: flinox/zookeeper:v3
-      
       container_name: flinox_zookeeper
-      
       hostname: flinox_zookeeper
-      
       user: zookeeper
-      
       volumes:
        - C:\Temp:/media/storage
-      
       ports:
        - "2181:2181"
        - "2888:2888"
        - "3888:3888"
-
       expose:
        - "2181"
        - "2888"
        - "3888"
-       
       environment:
        - AUTO_START=0
        - ZOO_LOG_DIR=/media/storage/zookeeper/log
-       - ZOO_LOG4J_PROP=```INFO,ROLLINGFILE```
+       - ZOO_LOG4J_PROP='INFO,ROLLINGFILE'
        - ZOOCFGDIR=/media/storage/zookeeper/config
-       
       networks:
        - network-kafka
-      
       command: ["/zookeeper_start.sh"]
       
 
     flinox_kafka:
-      
       image: flinox/kafka:v3
-
       container_name: flinox_kafka      
-      
       hostname: flinox_kafka
-      
       volumes:
        - C:\Temp:/media/storage
-      
       ports:
        - "8081:8081"
        - "8082:8082"
        - "8083:8083"
        - "8088:8088"       
        - "9092:9092"
-
       expose:
        - "8081"
        - "8082"
        - "8083"
        - "8088"
        - "9092"
-       
       environment:
        - AUTO_START=0
        - KAFKA_LOG4J_OPTS=-Dlog4j.configuration=/media/storage/kafka/config/log4j.properties
        - LOG4J_DIR=/media/storage/kafka/config/tools-log4j.properties
        - LOG_DIR=/media/storage/kafka/log
-       
       networks:
        - network-kafka       
-
       depends_on:
        - flinox_zookeeper   
-       
       command: ["/kafka_start.sh"]   
 ```
 
@@ -107,37 +87,37 @@ services:
 
 ### The folder and the configuration files is on this package, change this files if needed
 ```
-/media_storage/kafka/config/connect-console-sink.properties
-/media_storage/kafka/config/connect-console-source.properties
-/media_storage/kafka/config/connect-distributed.properties
-/media_storage/kafka/config/connect-file-sink.properties
-/media_storage/kafka/config/connect-file-source.properties
-/media_storage/kafka/config/connect-log4j.properties
-/media_storage/kafka/config/connect-standalone.properties
-/media_storage/kafka/config/consumer.properties
-/media_storage/kafka/config/kafka-rest.properties
-/media_storage/kafka/config/ksql-server.properties
-/media_storage/kafka/config/log4j.properties
-/media_storage/kafka/config/producer.properties
-/media_storage/kafka/config/server.properties
-/media_storage/kafka/config/tools-log4j.properties
-/media_storage/kafka/config/zookeeper.properties
-/media_storage/zookeeper/config/configuration.xsl
-/media_storage/zookeeper/config/log4j.properties
-/media_storage/zookeeper/config/zoo.cfg
-/media_storage/zookeeper/data/zookeeper_server.pid
-/media_storage/zookeeper/log/zookeeper.log
+/kafka/config/connect-console-sink.properties
+/kafka/config/connect-console-source.properties
+/kafka/config/connect-distributed.properties
+/kafka/config/connect-file-sink.properties
+/kafka/config/connect-file-source.properties
+/kafka/config/connect-log4j.properties
+/kafka/config/connect-standalone.properties
+/kafka/config/consumer.properties
+/kafka/config/kafka-rest.properties
+/kafka/config/ksql-server.properties
+/kafka/config/log4j.properties
+/kafka/config/producer.properties
+/kafka/config/server.properties
+/kafka/config/tools-log4j.properties
+/kafka/config/zookeeper.properties
+/zookeeper/config/configuration.xsl
+/zookeeper/config/log4j.properties
+/zookeeper/config/zoo.cfg
+/zookeeper/data/zookeeper_server.pid
+/zookeeper/log/zookeeper.log
 ```
 
 #### The main file to change zookeeper configuration is:
-```\media_storage\zookeeper\config\zoo.cfg```
+```/zookeeper/config/zoo.cfg```
 
 #### The main file to change kafka configuration is:
 ```
-\media_storage\kafka\config\server.properties
-\media_storage\kafka\config\producer.properties
-\media_storage\kafka\config\kafka-rest.properties
-\media_storage\kafka\config\ksql-server.properties
+/kafka/config/server.properties
+/kafka/config/producer.properties
+/kafka/config/kafka-rest.properties
+/kafka/config/ksql-server.properties
 ```
 
 ### For manual executions without docker-compose.yml ###
@@ -210,6 +190,11 @@ vi ksql-run-class.sh
 ```
 
 
-## How to use
+## How to use - (windows version)
+```
 1. Download the content in a folder, for example C:\Temp
-2. 
+2. Ensure the docker for windows is running.
+3. Open a windows powershell.
+4. Type cd \Temp 
+5. Type docker-compose up
+```
